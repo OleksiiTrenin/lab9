@@ -5,7 +5,7 @@ const movies = [
     description: "After more than thirty years of service, Maverick trains a new generation of pilots.",
     genre: "Action",
     poster: require("../assets/images/top-gun-maverick.jpg"),
-    showtime: "2025-05-02 16:00",
+   
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const movies = [
     description: "A hacker discovers a mysterious truth about reality.",
     genre: "Action",
     poster: require("../assets/images/matrix.jpg"),
-    showtime: "2025-05-01 20:00",
+   
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const movies = [
     description: "A team of explorers travel through a wormhole in space.",
     genre: "Sci-Fi",
     poster: require("../assets/images/interstellar.jpg"),
-    showtime: "2025-05-01 22:00",
+   
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const movies = [
     description: "A thief who steals corporate secrets through dream infiltration.",
     genre: "Sci-Fi",
     poster: require("../assets/images/inception.jpg"),
-    showtime: "2025-05-01 18:00",
+    
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const movies = [
     description: "Lightning McQueen sets out to prove that he still has what it takes to win.",
     genre: "Animation",
     poster: require("../assets/images/cars-3.jpg"),
-    showtime: "2025-05-02 18:00",
+   
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const movies = [
     description: "Dom Toretto and his family confront the most lethal opponent they've ever faced.",
     genre: "Action",
     poster: require("../assets/images/f9.jpg"),
-    showtime: "2025-05-02 20:00",
+ 
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const movies = [
     description: "Peter Parker teams up with past Spider-Men to fix a multiversal crisis.",
     genre: "Action",
     poster: require("../assets/images/spider-man-no-way-home.jpg"),
-    showtime: "2025-05-02 22:00",
+    
   },
 ];
 
