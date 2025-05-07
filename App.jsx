@@ -7,25 +7,39 @@ import movies from './data/movies';
 import './App.css';
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState(''); 
+  const [searchTerm, setSearchTerm] = useState('');
+
   return (
-    <div className="app-container">
-      <header className="app-header">
-        <div className="logo">Multiplex</div>
-        <nav className="nav-menu">
-          <a href="#">Львів, Spartak</a>
-          <input
-            type="text"
-            placeholder="Пошук..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
+    <Router>
+      <div className="app-container">
+        <Routes>
+          <Route
+            path="/home"
+            element={
+              <div>
+                <header className="app-header">
+                  <div className="logo">NedoMultiplex</div>
+                  <nav className="nav-menu">
+                    <a href="#">Львів, Spartak</a>
+                    <input
+                      type="text"
+                      placeholder="Пошук..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="search-input"
+                    />
+                    <a href="#">Увійти</a>
+                  </nav>
+                </header>
+                <Home movies={movies} searchTerm={searchTerm} />
+              </div>
+            }
           />
-          <a href="#">Увійти</a>
-        </nav>
-      </header>
-      <MovieList movies={movies || []} searchTerm={searchTerm || ''} />
-    </div>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/booking/:id" element={<Booking />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
