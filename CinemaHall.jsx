@@ -71,3 +71,9 @@ useEffect(() => {
       }));
     }
   };
+  const handleShowtimeClick = (time) => {
+    setSelectedShowtime(time);
+  };
+
+ 
+  const currentSelectedSeats = selectedSeatsByShowtime[selectedShowtime] || [];
