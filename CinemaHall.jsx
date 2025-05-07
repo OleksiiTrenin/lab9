@@ -77,3 +77,53 @@ useEffect(() => {
 
  
   const currentSelectedSeats = selectedSeatsByShowtime[selectedShowtime] || [];
+  return (
+    <div className="cinema-hall-container">
+      <div className="hall-content">
+        <div className="seats-container">
+          <div className="screen">ЕКРАН</div>
+          <div className="seats-layout">
+            {seats.map(seat => (
+              <div
+                key={seat.id}
+                className={`seat ${seat.booked ? 'booked' : ''} ${seat.selected ? 'selected' : ''} ${seat.type === 'SUPER LUX' ? 'super-lux' : 'good'}`}
+                onClick={() => handleSeatClick(seat.id)}
+                title={`${seat.type} - ${seat.price} грн`}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="booking-info">
+          <div className="legend">
+            <span className="legend-item good">GOOD - 160 грн</span>
+            <span className="legend-item super-lux">SUPER LUX - 270 грн</span>
+            <span className="legend-item booked">Заброньовано</span>
+          </div>
+          <div className="showtimes">
+            {showtimes.map(time => (
+              <button
+                key={time}
+                className={`showtime-btn ${selectedShowtime === time ? 'active' : ''}`}
+                onClick={() => handleShowtimeClick(time)}
+              >
+                {time}
+              </button>
+            ))}
+          </div>
+          <div className="selected-seats">
+            Вибрані місця: {currentSelectedSeats.length > 0 ? currentSelectedSeats.join(', ') : 'Немає'}
+          </div>
+          <div className="total-price">
+            Загальна сума: {currentSelectedSeats.reduce((sum, id) => {
+              const seat = seats.find(s => s.id === id);
+              return sum + (seat ? seat.price : 0);
+            }, 0)} грн
+          </div>
+          <button className="pay-btn">Замовити</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default CinemaHall;
