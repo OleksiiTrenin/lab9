@@ -22,3 +22,28 @@ function CinemaHall() {
       };
     });
   };
+useEffect(() => {
+    if (!seatsByShowtime[selectedShowtime]) {
+   
+      const newSeats = generateSeats();
+      setSeatsByShowtime(prev => ({
+        ...prev,
+        [selectedShowtime]: newSeats,
+      }));
+      setSeats(newSeats);
+    } else {
+      
+      const currentSeats = seatsByShowtime[selectedShowtime];
+      
+      const selectedSeatsForTime = selectedSeatsByShowtime[selectedShowtime] || [];
+      const updatedSeats = currentSeats.map(seat => ({
+        ...seat,
+        selected: selectedSeatsForTime.includes(seat.id),
+      }));
+      setSeats(updatedSeats);
+      setSeatsByShowtime(prev => ({
+        ...prev,
+        [selectedShowtime]: updatedSeats,
+      }));
+    }
+  }, [selectedShowtime, seatsByShowtime, selectedSeatsByShowtime]);
