@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import MovieList from './components/MovieList';
-import movies from './data/movies'; 
+import Booking from './pages/Booking';
+import Home from './pages/Home';
+import movies from './data/movies';
 import './App.css';
 
 function App() {
