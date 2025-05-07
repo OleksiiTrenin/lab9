@@ -47,3 +47,27 @@ useEffect(() => {
       }));
     }
   }, [selectedShowtime, seatsByShowtime, selectedSeatsByShowtime]);
+
+  const handleSeatClick = (seatId) => {
+    const seat = seats.find(s => s.id === seatId);
+    if (!seat.booked) {
+      const updatedSeats = seats.map(s =>
+        s.id === seatId ? { ...s, selected: !s.selected } : s
+      );
+      setSeats(updatedSeats);
+      
+      setSeatsByShowtime(prev => ({
+        ...prev,
+        [selectedShowtime]: updatedSeats,
+      }));
+     
+      const currentSelectedSeats = selectedSeatsByShowtime[selectedShowtime] || [];
+      const newSelectedSeats = currentSelectedSeats.includes(seatId)
+        ? currentSelectedSeats.filter(id => id !== seatId)
+        : [...currentSelectedSeats, seatId];
+      setSelectedSeatsByShowtime(prev => ({
+        ...prev,
+        [selectedShowtime]: newSelectedSeats,
+      }));
+    }
+  };
